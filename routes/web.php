@@ -34,4 +34,22 @@ Route::get('/add', function(){
 Route::get('/adminList', [Admin_Controller::class, 'list'])->name('adminList');
 Route::get('/addUser/{id}',[Admin_Controller::class, 'show'])->name('admin.show');
 Route::put('/addUser/{id}',[Admin_Controller::class, 'update'])->name('admin.update');
+
+Route::get('/', function () {
+    return redirect('/home');
+});
+
+Route::get('/home', function(){
+    return view('userPage.homePage');
+})->name('home');
+
+Route::get('/home', [Product_Controller::class,'homepageproducts'])->name('home');
+Route::get('/dog', [Product_Controller::class, 'showDogFood'])->name('dog');
+Route::get('/cat', [Product_Controller::class, 'showCatFood'])->name('cat');
+Route::get('/clothe', [Product_Controller::class, 'showClothes'])->name('clothe');
+Route::delete('/users/{id}', [Admin_Controller::class, 'destroy'])->name('admin.destroy');
+
+Route::delete('/product/{id}', [Product_Controller::class, 'destroy'])->name('products.destroy');
+
+
 require __DIR__.'/auth.php';

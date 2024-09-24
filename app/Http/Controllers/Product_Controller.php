@@ -18,7 +18,7 @@ class Product_Controller extends Controller
             'category' => 'required|string|max:255',
             'sku' => 'required|integer',
             'price' => 'required|integer',
-            'discount' => 'required|integer',
+            'discount' => 'nullable|integer',
             'description' => 'required',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
@@ -38,7 +38,7 @@ class Product_Controller extends Controller
             'image' => $imagePath,
 
         ]);
-        return redirect('/home')->with('success', 'Product added successfully!');
+        return redirect('/products')->with('success', 'Product added successfully!');
     }
 
     public function list(){
@@ -52,7 +52,27 @@ class Product_Controller extends Controller
     }
     
     
-  
+    public function showCatFood(){
+        $catfood = product::where('category', 'Cat food')->get();
+        return view('userPage.catCategory', compact('catfood'));
+    }
+
+    public function showDogFood(){
+        $dogfood = product::where('category', 'Dog food')->get();
+        return view('userPage.dogCategory', compact('dogfood'));
+    }
+
+    public function showClothes(){
+        $clothe = product::where('category', 'Clothes')->get();
+        return view('userPage.clotheCategory', compact('clothe'));
+    }
+
+    public function homepageproducts(){
+        $catfood = product::where('category', 'Cat food')->take(4)->get();
+        $dogfood = product::where('category', 'Dog food')->take(4)->get();
+
+        return view('userPage.homePage', compact('catfood', 'dogfood'));
+    }
    
 
     public function update(Request $request, $id)
@@ -72,6 +92,12 @@ class Product_Controller extends Controller
         $product->save();
 
         return redirect()->route('list')->with('success', 'Product updated successfully.');
+    }
+
+    public function destroy($id){
+        $product = product::findOrFail($id);
+        $product->delete();
+        return redirect()->route('list')->with('sucess', 'Product Deleted successfuly');
     }
     
 }

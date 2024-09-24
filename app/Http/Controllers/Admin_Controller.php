@@ -26,14 +26,15 @@ class Admin_Controller extends Controller
         admin::create([
             'name' => $validate['name'],
             'email' => $validate['email'],
-            'password' => $validate['password']
+            'password' => bcrypt($validate['password']),
+            'usertype'=>'admin'
         ]);
 
         return redirect()->back()->with('success', 'Admin created successfully!');
     }
 
     public function list(){
-        $admins = admin::all();
+        $admins = admin::where('usertype','admin')->get();
         return view('view_admins', compact('admins'));
     }
 
@@ -52,6 +53,12 @@ class Admin_Controller extends Controller
         $admin->save();
 
         return redirect()->route('adminList')->with('success', 'Product updated successfully.');
+    }
+
+    public function destroy($id){
+        $admin = admin::findOrFail($id);
+        $admin->delete();
+        return redirect()->route('adminList')->with('success', 'User deleted successfully');
     }
     
 

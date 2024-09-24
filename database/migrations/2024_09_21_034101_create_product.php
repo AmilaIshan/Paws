@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('category');
             $table->integer('sku');
             $table->integer('price');
-            $table->integer('discount');
+            $table->integer('discount')->nullable();
             $table->text('description');
             $table->string('image')->nullable();
             

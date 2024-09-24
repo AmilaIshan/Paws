@@ -15,7 +15,7 @@
                 <p class="text-gray-700 mb-2"><strong>Password:</strong><input type="password" name="password" class="mb-2 mr-2 text-center" value="{{ $admin->password }}"></p>
                 
     
-                <a href="{{route('list')}}" class="bg-gray-400 text-white px-4 py-2 rounded">Back to List</a>
+                <a href="{{route('adminList')}}" class="bg-gray-400 text-white px-4 py-2 rounded">Back to List</a>
                 <button type="submit" class="bg-yellow-400 text-white px-4 py-2 rounded">Save Changes</button>
             </div>
         </form>

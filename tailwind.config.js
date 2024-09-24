@@ -17,7 +17,11 @@ export default {
             colors: {
               primary: '#FFA500',
               secondary: '#FFCB70',
-            }
+              third: '#FFFBF4',
+            },
+            boxShadow: {
+                'orange': '0 4px 30px rgba(255, 165, 0, 0.5)', // Customize as needed
+              },
         },
     },
 
