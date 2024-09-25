@@ -7,7 +7,7 @@
 <h3 class="text-center font-semibold text-[32px] ">Category</h3>
 <hr> 
 
-<div class="flex flex-row justify-center gap-48 mt-10 mb-48">
+<div class="flex flex-col md:flex-row justify-center lg:gap-48 md:gap-20 mt-10 mb-48">
 
     <div class="flex flex-col items-center">
         <a href="{{route('dog')}}">
@@ -22,7 +22,7 @@
 
     <div class="flex flex-col items-center">
         <a href="{{route('cat')}}">
-        <div class="bg-secondary w-48 h-48 rounded-full m-2 cursor-pointer border-solid border-2 flex items-center justify-center border-primary">
+        <div class="bg-secondary w-48 h-48 rounded-full  m-2 cursor-pointer border-solid border-2 flex items-center justify-center border-primary">
         <img src="{{asset('images/catfood3.png')}}" class=""  alt="">
         </a>
    
@@ -47,7 +47,7 @@
 
 <h3 class="text-center mt-10 font-bold text-[32px] ">Dog Food</h3>
 <hr>
-<div class="flex flex-row justify-center gap-32 mt-10 mb-48">
+<div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-10 mb-48 justify-items-center">
 
     
         @foreach($dogfood as $product)
@@ -77,7 +77,7 @@
 
 <h3 class="text-center mt-10 font-bold text-[32px] ">Cat Food</h3>
 <hr>
-<div class="flex flex-row justify-center gap-32 mt-10 mb-48">
+<div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-10 mb-48 justify-items-center">
 
     
         @foreach($catfood as $product)
@@ -108,7 +108,7 @@
 
 <h3 class="text-center mt-10 font-bold text-[32px] ">Why Choose Us?</h3>
 <hr> 
-<div class="flex flex-row justify-center gap-32 mt-10 mb-64">
+<div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-10 mb-48 justify-items-center">
 
     <div class="w-[300px] h-[400px] bg-white shadow-orange leading-7 p-4 rounded-md flex flex-col items-center text-center">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="orange" class="size-32">

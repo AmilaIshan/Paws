@@ -68,9 +68,22 @@
                     </svg>
     
                     Add User</a>
-                </li>
+                </li >
+                <div class="bg-red-400 text-white">
+                <form method="POST"  action="{{ route('logout') }}">
+                    @csrf
 
-                        <li>
+                    <x-responsive-nav-link :href="route('logout')"
+                            onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        {{ __('Log Out') }}
+                    </x-responsive-nav-link>
+                </form>
+                </div>
+                
+                <li>
+
+                </li>
             
 
 

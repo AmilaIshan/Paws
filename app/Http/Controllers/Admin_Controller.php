@@ -60,7 +60,7 @@ class Admin_Controller extends Controller
         $admin->delete();
         return redirect()->route('adminList')->with('success', 'User deleted successfully');
     }
-    
+
 
     
 }

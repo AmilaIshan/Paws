@@ -19,9 +19,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/product', [Product_Controller::class, 'add']);
+Route::get('/product', [Product_Controller::class, 'add'])->middleware(['auth', 'admin']);
 Route::post('/product',[Product_Controller::class, 'store'])->name('addproduct');
-Route::get('/products',[Product_Controller::class, 'list'])->name('list');
+Route::get('/products',[Product_Controller::class, 'list'])->middleware(['auth', 'admin'])->name('list');
 // Route::get('/products/{id}', [Product_Controller::class, 'show'])->name('single');
 Route::get('/products/{id}', [Product_Controller::class, 'show'])->name('products.show');
 Route::put('/products/{id}', [Product_Controller::class, 'update'])->name('products.update');
@@ -29,9 +29,9 @@ Route::put('/products/{id}', [Product_Controller::class, 'update'])->name('produ
 Route::post('/add_User', [Admin_Controller::class, 'store'])->name('createAdmin');
 Route::get('/add', function(){
     return view('add_User');
-})->name('add');
+})->middleware(['auth', 'admin'])->name('add');
 // Route::get('/addUser', [Admin_Controller::class, 'show']);
-Route::get('/adminList', [Admin_Controller::class, 'list'])->name('adminList');
+Route::get('/adminList', [Admin_Controller::class, 'list'])->middleware(['auth', 'admin'])->name('adminList');
 Route::get('/addUser/{id}',[Admin_Controller::class, 'show'])->name('admin.show');
 Route::put('/addUser/{id}',[Admin_Controller::class, 'update'])->name('admin.update');
 
@@ -50,6 +50,8 @@ Route::get('/clothe', [Product_Controller::class, 'showClothes'])->name('clothe'
 Route::delete('/users/{id}', [Admin_Controller::class, 'destroy'])->name('admin.destroy');
 
 Route::delete('/product/{id}', [Product_Controller::class, 'destroy'])->name('products.destroy');
+
+
 
 
 require __DIR__.'/auth.php';
